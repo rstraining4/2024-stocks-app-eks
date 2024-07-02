@@ -4,7 +4,8 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 5.0.0"
+      #version = ">= 5.0.0"
+      version = ">= 5.8.1"
     }
     helm = {
       source  = "hashicorp/helm"
@@ -71,7 +72,8 @@ module "secretsmanager" {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = ">= 5.0.0"
+  #version = ">= 5.0.0"
+  version = ">= 5.8.1"
 
   name = local.name
   cidr = local.vpc_cidr
@@ -132,7 +134,8 @@ module "aurora" {
 
 module "eks" {
   # forked from terraform-aws-modules/eks/aws, fixes deprecated resolve_conflicts issue
-  source = "github.com/cloudacademy/terraform-aws-eks"
+  #source = "github.com/cloudacademy/terraform-aws-eks"
+  source = "github.com/rstraining4/terraform-aws-eks"
 
   cluster_name    = local.k8s.cluster_name
   cluster_version = local.k8s.version
